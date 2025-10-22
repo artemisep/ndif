@@ -66,11 +66,27 @@ html_theme_options = {
 myst_enable_extensions = ["colon_fence", "deflist", "fieldlist", "attrs_block"]
 
 # Intersphinx (link to external APIs like Python, PyTorch, FastAPI)
+'''
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3", {}),
     "torch": ("https://pytorch.org/docs/stable", {}),
     "fastapi": ("https://fastapi.tiangolo.com/", {}),
 }
+'''
+
+#try to fix the config error after the change in the last commit
+intersphinx_mapping = {
+    "python": ("https://docs.python.org/3/", None),
+    "torch": ("https://pytorch.org/docs/stable/", None),
+    "fastapi": ("https://fastapi.tiangolo.com/", None),
+}
+# (Optional) be explicit
+intersphinx_timeout = 5
+
+
+# (Optional) be explicit
+intersphinx_timeout = 5
+#end of try to fix
 
 # If your package root is `src/ndif`, use:
 # sys.path.insert(0, os.path.abspath('../../src'))
