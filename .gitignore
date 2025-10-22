@@ -2,3 +2,7 @@
 __pycache__/
 creds.json
 *.nfs*
+docs/_build/
+docs/build/
+*.orig
+*~
