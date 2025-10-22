@@ -8,10 +8,9 @@
 
 import os, sys
 from datetime import datetime
-#temp comment out
-#sys.path.insert(0, os.path.abspath('../../'))  # so autodoc can import ndif/*
 
 #added
+'''
 # Make the code importable for autodoc
 ROOT = os.path.abspath(os.path.join(__file__, "..", "..", ".."))
 SRC  = os.path.join(ROOT, "src")
@@ -21,6 +20,26 @@ elif os.path.isdir(os.path.join(ROOT, "ndif")):
     sys.path.insert(0, ROOT)     # flat layout fallback
 else:
     print("[conf] WARNING: could not find ndif under src/ or repo root")
+'''
+# --- Make the code importable for autodoc (works for src/ndif and src/services) ---
+autodoc_mock_imports = ["ray",
+                        "torch",
+                        "transformers",
+                        "mailgun",
+                        "pydantic_core",
+                        "slugify",]
+
+
+ROOT = os.path.abspath(os.path.join(__file__, "..", "..", ".."))
+SRC  = os.path.join(ROOT, "src")
+if SRC not in sys.path:
+    sys.path.insert(0, SRC)
+
+# Optional sanity: suppress warnings; just ensure src is on path
+# If you want a hint during debugging, uncomment:
+if not (os.path.isdir(os.path.join(SRC, "services")) or os.path.isdir(os.path.join(SRC, "ndif"))):
+     print("[conf] WARNING: didn't find 'src/services' or 'src/ndif' under", SRC)
+# --- end import path setup ---
 
 #added end
 
