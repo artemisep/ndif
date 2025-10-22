@@ -56,3 +56,6 @@ intersphinx_mapping = {
 
 # If your package root is `src/ndif`, use:
 # sys.path.insert(0, os.path.abspath('../../src'))
+
+#added
+root_doc = 'index'
