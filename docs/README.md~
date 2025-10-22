@@ -1,0 +1,3 @@
+#rebuild
+cd docs
+sphinx-build -b html -W source _build/html
