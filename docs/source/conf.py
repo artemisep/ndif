@@ -8,7 +8,21 @@
 
 import os, sys
 from datetime import datetime
-sys.path.insert(0, os.path.abspath('../../'))  # so autodoc can import ndif/*
+#temp comment out
+#sys.path.insert(0, os.path.abspath('../../'))  # so autodoc can import ndif/*
+
+#added
+# Make the code importable for autodoc
+ROOT = os.path.abspath(os.path.join(__file__, "..", "..", ".."))
+SRC  = os.path.join(ROOT, "src")
+if os.path.isdir(os.path.join(SRC, "ndif")):
+    sys.path.insert(0, SRC)      # src/ layout (NDIF uses this)
+elif os.path.isdir(os.path.join(ROOT, "ndif")):
+    sys.path.insert(0, ROOT)     # flat layout fallback
+else:
+    print("[conf] WARNING: could not find ndif under src/ or repo root")
+
+#added end
 
 project = 'NDIF'
 author = 'NDIF Team'
@@ -34,7 +48,11 @@ napoleon_numpy_docstring = True
 html_theme = 'pydata_sphinx_theme'
 html_title = 'NDIF Documentation'
 html_static_path = ['_static']
-html_logo = '_static/ndif_logo.png'  # add later if you want
+#set to this later when the logo is available
+#html_logo = '_static/ndif_logo.png'  # add later if you want
+html_logo = None
+#end set logo
+
 html_theme_options = {
     "show_prev_next": False,
     "external_links": [
